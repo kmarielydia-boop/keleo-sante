@@ -7,148 +7,272 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
-        
-        :root {
-            --keleo-blue: #1e3a8a;
-            --keleo-accent: #3b82f6;
-            --keleo-bg-light: #f8fafc;
-        }
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-        body {
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            color: #1e293b;
-        }
+    :root {
+        --keleo-blue: #1e3a8a;
+        --keleo-accent: #3b82f6;
+        --keleo-bg-light: #f8fafc;
+    }
 
-        .hero-gradient {
-            background: linear-gradient(135deg, #1e3a8a 0%, #172554 100%);
-        }
+    body {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        color: #1e293b;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
 
-        .btn-shadow {
-            box-shadow: 0 4px 14px 0 rgba(59, 130, 246, 0.39);
-        }
+    .hero-gradient {
+        background:
+            radial-gradient(circle at top right, rgba(96, 165, 250, 0.18), transparent 28%),
+            radial-gradient(circle at 20% 20%, rgba(59, 130, 246, 0.12), transparent 22%),
+            linear-gradient(135deg, #0f172a 0%, #172554 45%, #1e3a8a 100%);
+    }
 
-        .card-hover {
-            transition: all 0.3s ease;
-        }
+    .btn-shadow {
+        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.22);
+    }
 
-        .card-hover:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-        }
+    .card-hover {
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
 
-        /* Animation du bandeau de logos */
-        @keyframes scrollLogos {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
+    .card-hover:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px -18px rgba(15, 23, 42, 0.22);
+    }
 
-        .logo-slider-container {
-            overflow: hidden;
-            width: 100%;
-            position: relative;
-            background: white;
-        }
+    @keyframes scrollLogos {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
 
-        .logo-slider {
-            display: flex;
-            width: fit-content;
-            animation: scrollLogos 40s linear infinite;
-        }
+    .logo-slider-container {
+        overflow: hidden;
+        width: 100%;
+        position: relative;
+        background: white;
+    }
 
-        .logo-slider:hover {
-            animation-play-state: paused;
-        }
+    .logo-slider {
+        display: flex;
+        width: max-content;
+        animation: scrollLogos 40s linear infinite;
+    }
 
-        .faq-item[open] summary i {
-            transform: rotate(180deg);
-        }
+    .logo-slider:hover {
+        animation-play-state: paused;
+    }
 
-        details summary::-webkit-details-marker {
-            display: none;
-        }
-    </style>
+    .faq-item[open] summary i {
+        transform: rotate(180deg);
+    }
+
+    details summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .step-card-active {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 40px -18px rgba(15, 23, 42, 0.22);
+        border-color: rgba(59, 130, 246, 0.25);
+    }
+
+    .step-card-active .step-number {
+        color: #2563eb;
+    }
+
+    .glass-nav {
+        background: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+    }
+
+    .hero-badge {
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.15);
+    }
+
+    .hero-card {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+    }
+</style>
 </head>
 <body class="bg-slate-50">
 
-    <!-- Header / Navbar -->
-    <header class="bg-white/90 backdrop-blur-md border-b sticky top-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 bg-blue-700 rounded-lg flex items-center justify-center">
-                    <span class="text-white font-bold text-xl">K</span>
-                </div>
-                <span class="text-2xl font-extrabold tracking-tight text-blue-900">KELEO</span>
+   <!-- Header / Navbar -->
+<header class="glass-nav border-b border-white/60 sticky top-0 z-50">
+    <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+        <!-- Logo -->
+        <a href="#" class="flex items-center space-x-3 shrink-0">
+            <div class="w-9 h-9 bg-blue-700 rounded-xl flex items-center justify-center shadow-md shadow-blue-200/60">
+                <span class="text-white font-extrabold text-lg">K</span>
             </div>
-            <nav class="hidden md:flex space-x-8 text-sm font-semibold text-slate-600">
-                <a href="#problemes" class="hover:text-blue-700 transition">Le Problème</a>
-                <a href="#solution" class="hover:text-blue-700 transition">Notre Solution</a>
-                <a href="#methode" class="hover:text-blue-700 transition">Méthode</a>
-                <a href="#faq" class="hover:text-blue-700 transition">FAQ</a>
+            <div class="leading-none">
+                <span class="block text-xl sm:text-2xl font-black tracking-tight text-slate-900">KELEO</span>
+                <span class="hidden sm:block text-[10px] uppercase tracking-[0.22em] text-slate-400 font-bold mt-1">
+                    Logiciels métiers santé
+                </span>
+            </div>
+        </a>
+
+        <!-- Menu desktop -->
+        <nav class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-600">
+            <a href="#problemes" class="hover:text-blue-700 transition">Le Problème</a>
+            <a href="#methode" class="hover:text-blue-700 transition">Notre méthode</a>
+            <a href="#faq" class="hover:text-blue-700 transition">FAQ</a>
+        </nav>
+
+        <!-- CTA desktop -->
+        <a href="#contact" class="hidden md:inline-flex items-center justify-center bg-blue-600 text-white px-5 py-2.5 rounded-full text-sm font-bold btn-shadow hover:bg-blue-700 transition">
+            Echanger avec un expert
+        </a>
+
+        <!-- Mobile button -->
+        <button id="mobile-menu-button" class="md:hidden w-11 h-11 rounded-xl border border-slate-200 bg-white text-slate-900 flex items-center justify-center shadow-sm" aria-label="Ouvrir le menu">
+            <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-4 sm:px-6 pb-4">
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-lg p-4">
+            <nav class="flex flex-col space-y-1 text-sm font-semibold text-slate-700">
+                <a href="#problemes" class="px-3 py-3 rounded-xl hover:bg-slate-50 hover:text-blue-700 transition">Le Problème</a>
+                <a href="#methode" class="px-3 py-3 rounded-xl hover:bg-slate-50 hover:text-blue-700 transition">Notre méthode</a>
+                <a href="#faq" class="px-3 py-3 rounded-xl hover:bg-slate-50 hover:text-blue-700 transition">FAQ</a>
+                <a href="#contact" class="mt-2 bg-blue-600 text-white px-5 py-3 rounded-xl text-center font-bold hover:bg-blue-700 transition">
+                    Echanger avec un expert
+                </a>
             </nav>
-            <a href="#contact" class="hidden sm:block bg-blue-600 text-white px-5 py-2.5 rounded-full text-sm font-bold btn-shadow hover:bg-blue-700 transition">
-                Echanger avec un expert
-            </a>
         </div>
-    </header>
+    </div>
+</header>
 
     <!-- Hero Section -->
-    <section class="hero-gradient text-white py-20 lg:py-32 overflow-hidden relative">
-        <div class="container mx-auto px-6 relative z-10">
+<section class="hero-gradient text-white py-16 sm:py-20 lg:py-28 overflow-hidden relative">
+    <div class="container mx-auto px-4 sm:px-6 relative z-10">
+        <div class="grid lg:grid-cols-[minmax(0,1.1fr)_420px] gap-10 lg:gap-14 items-center">
+            
+            <!-- Colonne gauche -->
             <div class="max-w-4xl">
-                <span class="inline-block px-4 py-1.5 mb-6 bg-blue-500/20 border border-blue-400/30 rounded-full text-blue-300 text-xs font-bold uppercase tracking-widest">
+                <span class="hero-badge inline-flex items-center px-4 py-2 mb-6 bg-white/10 border border-white/15 rounded-full text-blue-100 text-[10px] sm:text-xs font-bold uppercase tracking-[0.18em] sm:tracking-[0.22em]">
                     Logiciels métiers pour les structures de santé
                 </span>
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-6">
-                    Reprenez le <span class="text-blue-400">contrôle</span> de votre activité.
+
+                <h1 class="text-3xl sm:text-4xl md:text-6xl font-black leading-[1.05] mb-6 max-w-4xl">
+                    Reprenez le <span class="text-blue-300">contrôle</span><br class="hidden sm:block">
+                    de votre activité.
                 </h1>
-                <p class="text-xl text-blue-100 mb-10 leading-relaxed max-w-2xl">
+
+                <p class="text-base sm:text-lg md:text-xl text-blue-50/90 mb-8 sm:mb-10 leading-relaxed max-w-2xl">
                     Keleo conçoit des logiciels métiers sur mesure pour interconnecter vos outils existants, structurer vos processus et simplifier le pilotage de votre organisation.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                    <a href="#contact" class="bg-white text-blue-900 px-8 py-4 rounded-xl font-bold text-center text-lg hover:bg-blue-50 transition transform hover:scale-105">
+
+                <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-10 sm:mb-12 max-w-2xl">
+                    <a href="#contact" class="bg-white text-blue-900 px-6 sm:px-8 py-4 rounded-2xl font-bold text-center text-base sm:text-lg hover:bg-blue-50 transition transform hover:scale-[1.02] shadow-xl">
                         Échanger sur mon projet
                     </a>
-                    <a href="#methode" class="flex items-center justify-center space-x-2 px-6 py-4 border border-blue-400/30 rounded-xl font-bold text-blue-100 hover:bg-white/5 transition group">
+                    <a href="#methode" class="flex items-center justify-center space-x-2 px-6 py-4 border border-white/20 rounded-2xl font-bold text-blue-50 hover:bg-white/8 transition group text-base">
                         <span>Découvrir notre méthode</span>
                         <i class="fa-solid fa-arrow-right text-sm group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
-                
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-white/10 pt-8">
-                    <div class="flex items-center space-x-3 text-blue-200/90 text-sm">
-                        <i class="fa-solid fa-circle-check text-blue-400"></i>
-                        <span> Zéro ressaisie entre outils</span>
+
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 border-t border-white/10 pt-6 sm:pt-8 max-w-3xl">
+                    <div class="flex items-start space-x-3 text-blue-50 text-sm leading-snug">
+                        <i class="fa-solid fa-circle-check text-blue-300 mt-0.5 shrink-0"></i>
+                        <span>Zéro ressaisie entre outils</span>
                     </div>
-                    <div class="flex items-center space-x-3 text-blue-200/90 text-sm">
-                        <i class="fa-solid fa-circle-check text-blue-400"></i>
+                    <div class="flex items-start space-x-3 text-blue-50 text-sm leading-snug">
+                        <i class="fa-solid fa-circle-check text-blue-300 mt-0.5 shrink-0"></i>
                         <span>Coordination des équipes</span>
                     </div>
-                    <div class="flex items-center space-x-3 text-blue-200/90 text-sm">
-                        <i class="fa-solid fa-circle-check text-blue-400"></i>
+                    <div class="flex items-start space-x-3 text-blue-50 text-sm leading-snug">
+                        <i class="fa-solid fa-circle-check text-blue-300 mt-0.5 shrink-0"></i>
                         <span>Vision claire de l’activité</span>
                     </div>
                 </div>
             </div>
+
+            <!-- Colonne droite -->
+            <div class="hidden lg:block">
+                <div class="hero-card rounded-[2rem] p-6 shadow-2xl">
+                    <div class="bg-white rounded-[1.5rem] p-6 text-slate-900">
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <p class="text-xs uppercase tracking-[0.2em] text-slate-400 font-bold">Vue consolidée</p>
+                                <h3 class="text-xl font-black mt-1">Pilotage simplifié</h3>
+                            </div>
+                            <div class="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center">
+                                <i class="fa-solid fa-chart-line"></i>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div class="rounded-2xl bg-slate-50 border border-slate-100 p-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-semibold text-slate-700">Flux interconnectés</span>
+                                    <span class="text-xs font-bold text-emerald-600">+ fluidité</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full w-[82%]"></div>
+                                </div>
+                            </div>
+
+                            <div class="rounded-2xl bg-slate-50 border border-slate-100 p-4">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-semibold text-slate-700">Ressaisies réduites</span>
+                                    <span class="text-xs font-bold text-emerald-600">- erreurs</span>
+                                </div>
+                                <div class="w-full bg-slate-200 rounded-full h-2">
+                                    <div class="bg-blue-600 h-2 rounded-full w-[76%]"></div>
+                                </div>
+                            </div>
+
+                            <div class="rounded-2xl bg-slate-900 text-white p-5">
+                                <p class="text-xs uppercase tracking-[0.18em] text-slate-400 font-bold mb-2">Bénéfices clés</p>
+                                <div class="space-y-3 text-sm">
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fa-solid fa-check text-blue-400"></i>
+                                        <span>Moins de friction opérationnelle</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fa-solid fa-check text-blue-400"></i>
+                                        <span>Données plus fiables</span>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <i class="fa-solid fa-check text-blue-400"></i>
+                                        <span>Décisions plus rapides</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <!-- Décoration Arrière-plan -->
-        <div class="absolute right-[-10%] top-[-10%] w-1/2 h-full opacity-10 pointer-events-none">
-            <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-                <circle cx="200" cy="200" r="180" stroke="white" stroke-width="2"/>
-                <circle cx="200" cy="200" r="140" stroke="white" stroke-width="1" stroke-dasharray="10 10"/>
-                <circle cx="200" cy="200" r="100" stroke="white" stroke-width="1"/>
-            </svg>
-        </div>
-    </section>
+    </div>
+
+    <!-- décor -->
+    <div class="absolute right-[-35%] sm:right-[-12%] top-[-8%] w-[90%] sm:w-[45%] h-full opacity-10 pointer-events-none">
+        <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+            <circle cx="200" cy="200" r="180" stroke="white" stroke-width="2"/>
+            <circle cx="200" cy="200" r="140" stroke="white" stroke-width="1" stroke-dasharray="10 10"/>
+            <circle cx="200" cy="200" r="100" stroke="white" stroke-width="1"/>
+        </svg>
+    </div>
+</section>
 
     <!-- Bandeau Déroulant Logos -->
     <section class="py-12 bg-white border-b border-slate-100 overflow-hidden">
-        <div class="container mx-auto px-6 mb-8 text-center">
-            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.4em]"> Ils ont fait confiance à Keleo</p>
+        <div class="container mx-auto px-4 sm:px-6 mb-8 text-center">
+            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-[0.4em]">Ils ont fait confiance à Keleo</p>
         </div>
         <div class="logo-slider-container">
             <div class="logo-slider">
-                <!-- Groupe 1 -->
                 <div class="flex items-center space-x-24 px-12">
                     <div class="flex items-center space-x-3 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
                         <i class="fa-solid fa-microscope text-2xl text-blue-800"></i>
@@ -171,7 +295,7 @@
                         <span class="text-lg font-bold text-slate-700">Sante-Logistique</span>
                     </div>
                 </div>
-                <!-- Groupe 2 (Copie pour l'effet infini) -->
+
                 <div class="flex items-center space-x-24 px-12">
                     <div class="flex items-center space-x-3 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition duration-300">
                         <i class="fa-solid fa-microscope text-2xl text-blue-800"></i>
@@ -198,10 +322,10 @@
         </div>
     </section>
 
-<!-- Problem Section -->
-    <section id="problemes" class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto mb-20">
+    <!-- Problem Section -->
+    <section id="problemes" class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-3xl mx-auto mb-14 sm:mb-20">
                 <h2 class="text-sm font-bold text-blue-600 uppercase tracking-widest mb-4">Le constat</h2>
                 <h3 class="text-3xl md:text-4xl font-black text-slate-900 leading-tight mb-8">Pourquoi vos outils actuels freinent votre croissance ?</h3>
                 <div class="max-w-2xl mx-auto space-y-2">
@@ -219,247 +343,224 @@
                     <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:rotate-6">
                         <i class="fa-solid fa-link-slash text-2xl"></i>
                     </div>
-                    <h4 class="text-xl font-extrabold mb-4 text-slate-800">Outils non connectés </h4>
+                    <h4 class="text-xl font-extrabold mb-4 text-slate-800">Outils non connectés</h4>
                     <p class="text-slate-600 leading-relaxed">
                         Vos équipes utilisent plusieurs outils qui ne communiquent pas. Résultat : les informations circulent mal, la coordination devient plus difficile et les retards s'accumulent.
                     </p>
                 </div>
+
                 <div class="p-8 rounded-3xl bg-blue-50/70 border border-blue-100 shadow-sm group hover:border-blue-300 transition-all duration-300">
                     <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:rotate-6">
                         <i class="fa-solid fa-database text-2xl"></i>
                     </div>
                     <h4 class="text-xl font-extrabold mb-4 text-slate-800">Données dispersées</h4>
-                    
                     <p class="text-slate-600 leading-relaxed">
-                       La double saisie ralentie vos équipes et multiplie les risques d'erreurs.
+                        La double saisie ralentit vos équipes et multiplie les risques d'erreurs.
                     </p>
                 </div>
+
                 <div class="p-8 rounded-3xl bg-blue-50/70 border border-blue-100 shadow-sm group hover:border-blue-300 transition-all duration-300">
                     <div class="w-14 h-14 bg-white rounded-2xl flex items-center justify-center mb-8 shadow-sm group-hover:bg-blue-600 group-hover:text-white transition-all duration-300 transform group-hover:rotate-6">
                         <i class="fa-solid fa-eye-slash text-2xl"></i>
                     </div>
                     <h4 class="text-xl font-extrabold mb-4 text-slate-800">Manque de visibilité</h4>
-
                     <p class="text-slate-600 leading-relaxed">
-                        Sans vision consolidée de l’activité, il devient difficile d’anticiper les tensions et de piloter efficacement plusieurs sites simultanément. 
+                        Sans vision consolidée de l’activité, il devient difficile d’anticiper les tensions et de piloter efficacement plusieurs sites simultanément.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Cas d'usage Section -->
+    <section id="cas-usage" class="py-16 sm:py-24 bg-slate-50">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="max-w-4xl mx-auto bg-white rounded-[3rem] p-8 md:p-16 shadow-2xl border border-blue-100">
+                <h3 class="text-3xl md:text-4xl font-black text-slate-900 mb-12 text-center">
+                    Dans quels cas faire appel à <span class="text-blue-600">Keleo</span> ?
+                </h3>
 
-<!-- Cas d'usage Section -->
-<section id="cas-usage" class="py-24 bg-slate-50">
-    <div class="container mx-auto px-6">
-
-        <div class="max-w-4xl mx-auto bg-white rounded-[3rem] p-8 md:p-16 shadow-2xl border border-blue-100">
-
-            <h3 class="text-3xl md:text-4xl font-black text-slate-900 mb-12 text-center">
-                Dans quels cas faire appel à <span class="text-blue-600">Keleo</span> ?
-            </h3>
-
-            <div class="space-y-6">
-
-                <div class="flex items-center p-4 rounded-2xl border border-slate-100">
-                    <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mr-6">
-                        <i class="fa-solid fa-link-slash text-blue-600"></i>
+                <div class="space-y-6">
+                    <div class="flex items-center p-4 rounded-2xl border border-slate-100">
+                        <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mr-6 shrink-0">
+                            <i class="fa-solid fa-link-slash text-blue-600"></i>
+                        </div>
+                        <p class="text-base sm:text-lg font-semibold text-slate-700">
+                            Vos données sont réparties entre plusieurs outils non connectés
+                        </p>
                     </div>
-                    <p class="text-lg font-semibold text-slate-700">
-                        Vos données sont réparties entre plusieurs outils non connectés
-                    </p>
+
+                    <div class="flex items-center p-4 rounded-2xl border border-slate-100">
+                        <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mr-6 shrink-0">
+                            <i class="fa-solid fa-diagram-project text-blue-600"></i>
+                        </div>
+                        <p class="text-base sm:text-lg font-semibold text-slate-700">
+                            Vous avez un projet logiciel mais pas encore le bon cadrage
+                        </p>
+                    </div>
+
+                    <div class="flex items-center p-4 rounded-2xl border border-slate-100">
+                        <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mr-6 shrink-0">
+                            <i class="fa-solid fa-code-branch text-blue-600"></i>
+                        </div>
+                        <p class="text-base sm:text-lg font-semibold text-slate-700">
+                            Vous hésitez entre outil standard, interconnexion ou sur-mesure
+                        </p>
+                    </div>
                 </div>
 
-                <div class="flex items-center p-4 rounded-2xl border border-slate-100">
-                    <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mr-6">
-                        <i class="fa-solid fa-diagram-project text-blue-600"></i>
-                    </div>
-                    <p class="text-lg font-semibold text-slate-700">
-                        Vous avez un projet logiciel mais pas encore le bon cadrage
-                    </p>
+                <div class="mt-12 text-center">
+                    <a href="#contact" class="inline-flex items-center space-x-3 text-blue-600 font-bold hover:underline">
+                        <span>Identifier mon besoin avec un expert Keleo</span>
+                        <i class="fa-solid fa-chevron-right text-xs"></i>
+                    </a>
                 </div>
-
-                <div class="flex items-center p-4 rounded-2xl border border-slate-100">
-                    <div class="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mr-6">
-                        <i class="fa-solid fa-code-branch text-blue-600"></i>
-                    </div>
-                    <p class="text-lg font-semibold text-slate-700">
-                        Vous hésitez entre outil standard, interconnexion ou sur-mesure
-                    </p>
-                </div>
-
             </div>
-
-            <div class="mt-12 text-center">
-                <a href="#contact" class="inline-flex items-center space-x-3 text-blue-600 font-bold hover:underline">
-                    <span>Identifier mon besoin avec un expert Keleo</span>
-                    <i class="fa-solid fa-chevron-right text-xs"></i>
-                </a>
-            </div>
-
         </div>
+    </section>
 
-    </div>
-</section>
+    <!-- Solution / Sur-mesure Section -->
+    <section class="py-16 sm:py-24 bg-white">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h3 class="text-3xl md:text-4xl font-black text-slate-900 mb-6">
+                    Notre solution pour structurer votre organisation
+                </h3>
 
-<!-- Sur-mesure Section -->
-<section id="sur-mesure" class="py-24 bg-white">
+                <p class="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
+                    Keleo conçoit des solutions sur mesure lorsque les outils standards, les ressaisies et les process bricolés ne suffisent plus à soutenir votre activité.
+                </p>
 
-    <div class="container mx-auto px-6">
+                <div class="flex flex-wrap justify-center gap-4 mt-10">
+                    <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm font-bold text-slate-700 shadow-sm">
+                        <i class="fa-solid fa-check-circle text-blue-600 mr-2"></i>
+                        Outils non connectés
+                    </span>
 
-        <div class="max-w-4xl mx-auto text-center">
+                    <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm font-bold text-slate-700 shadow-sm">
+                        <i class="fa-solid fa-check-circle text-blue-600 mr-2"></i>
+                        Processus spécifiques
+                    </span>
 
-            <h3 class="text-3xl md:text-4xl font-black text-slate-900 mb-6">
-                Quand le sur-mesure devient la bonne solution
-            </h3>
+                    <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm font-bold text-slate-700 shadow-sm">
+                        <i class="fa-solid fa-check-circle text-blue-600 mr-2"></i>
+                        Abus d'Excel
+                    </span>
 
-            <p class="text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto">
-                Le développement sur-mesure n’est pas toujours nécessaire.
-                Il devient pertinent lorsque les outils standards ne permettent plus
-                d’accompagner l’évolution de votre organisation.
-            </p>
+                    <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm font-bold text-slate-700 shadow-sm">
+                        <i class="fa-solid fa-check-circle text-blue-600 mr-2"></i>
+                        Ressaisies multiples
+                    </span>
 
-            <!-- Tags / badges -->
-            <div class="flex flex-wrap justify-center gap-4 mt-10">
+                    <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm font-bold text-slate-700 shadow-sm">
+                        <i class="fa-solid fa-check-circle text-blue-600 mr-2"></i>
+                        Pilotage multi-sites
+                    </span>
+                </div>
 
-                <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm font-bold text-slate-700 shadow-sm">
-                    <i class="fa-solid fa-check-circle text-blue-600 mr-2"></i>
-                    Outils non connectés
-                </span>
-
-                <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm font-bold text-slate-700 shadow-sm">
-                    <i class="fa-solid fa-check-circle text-blue-600 mr-2"></i>
-                    Processus spécifiques
-                </span>
-
-                <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm font-bold text-slate-700 shadow-sm">
-                    <i class="fa-solid fa-check-circle text-blue-600 mr-2"></i>
-                    Abus d'Excel
-                </span>
-
-                <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm font-bold text-slate-700 shadow-sm">
-                    <i class="fa-solid fa-check-circle text-blue-600 mr-2"></i>
-                    Ressaisies multiples
-                </span>
-
-                <span class="px-4 py-2 bg-white border border-blue-200 rounded-full text-sm font-bold text-slate-700 shadow-sm">
-                    <i class="fa-solid fa-check-circle text-blue-600 mr-2"></i>
-                    Pilotage multi-sites
-                </span>
-
+                <p class="text-[16px] text-slate-500 mt-10 max-w-xl mx-auto">
+                    Dans ces situations, Keleo vous aide à clarifier les besoins réels et à concevoir une solution adaptée à votre organisation.
+                </p>
             </div>
-
-            <p class="text-[16px] text-slate-500 mt-10 max-w-xl mx-auto">
-                Dans ces situations, Keleo vous aide à clarifier les besoins réels et à concevoir une solution adaptée à votre organisation.
-            </p>
-
         </div>
+    </section>
 
-    </div>
-
-</section>
-
-
-
-    
     <!-- Méthode Section -->
-    <section id="methode" class="py-24 bg-slate-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-20">
+    <section id="methode" class="py-16 sm:py-24 bg-slate-50">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center mb-14 sm:mb-20">
                 <h2 class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-4">L'approche Keleo</h2>
-                <h3 class="text-4xl font-black text-slate-900 leading-tight">Notre méthode en 3 étapes.</h3>
-                <p class="mt-6 text-slate-600 max-w-2xl mx-auto text-lg leading-relaxed">Nous vous accompagnons du cadrage du projet jusqu’à sa mise en œuvre et son évolution.</p>
+                <h3 class="text-3xl sm:text-4xl font-black text-slate-900 leading-tight">Notre méthode en 3 étapes.</h3>
+                <p class="mt-6 text-slate-600 max-w-2xl mx-auto text-base sm:text-lg leading-relaxed">
+                    Nous vous accompagnons du cadrage du projet jusqu’à sa mise en œuvre et son évolution.
+                </p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-10">
-                <!-- Etape 1 -->
-                <div class="bg-white p-10 rounded-3xl border border-slate-100 card-hover relative overflow-hidden group">
-		 <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-bl-full group-hover:bg-blue-500 transition-colors duration-500"></div>
-		 <!-- Numéro interactif -->
+                <div class="bg-white p-10 rounded-3xl border border-slate-100 card-hover relative overflow-hidden group step-card">
+                    <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-bl-full group-hover:bg-blue-500 transition-colors duration-500"></div>
                     <div class="text-5xl font-black text-blue-100 mb-8 relative transition-colors duration-300 group-hover:text-blue-600 step-number">01</div>
                     <h4 class="text-2xl font-extrabold mb-4 text-slate-800">Clarification</h4>
                     <p class="text-slate-500 italic mb-6">
                         "Un projet réussi commence par un problème bien compris."
                     </p>
-                    <p class="text-slate-600 mb-8 leading-relaxed">Avant de développer un outil, nous analysons vos usages, vos processus et les irritants du terrain pour identifier les véritables leviers d’amélioration.</p>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        Avant de développer un outil, nous analysons vos usages, vos processus et les irritants du terrain pour identifier les véritables leviers d’amélioration.
+                    </p>
                     <ul class="text-sm font-semibold text-slate-700 space-y-3">
                         <li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Audit des flux et des outils</li>
                         <li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Ateliers de cadrage</li>
-<li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Analyse des besoins</li>
-<li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Cartographie des usages</li>
-
+                        <li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Analyse des besoins</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Cartographie des usages</li>
                     </ul>
                 </div>
-                <!-- Etape 2 -->
+
                 <div class="bg-white p-10 rounded-3xl border border-slate-100 card-hover relative overflow-hidden group step-card">
                     <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-bl-full group-hover:bg-blue-500 transition-colors duration-500"></div>
-                    <!-- Numéro interactif -->
                     <div class="text-5xl font-black text-blue-100 mb-8 relative transition-colors duration-300 group-hover:text-blue-600 step-number">02</div>
-                    
                     <h4 class="text-2xl font-extrabold mb-4 text-slate-800">Co-Conception</h4>
                     <p class="text-slate-500 italic mb-6">
                         "Un bon outil s’adapte au terrain."
                     </p>
-                    <p class="text-slate-600 mb-8 leading-relaxed"><br>Nous concevons la solution avec vos équipes pour garantir un usage 100% fluide, sur le terrain comme dans les fonctions support.</p>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        Nous concevons la solution avec vos équipes pour garantir un usage 100% fluide, sur le terrain comme dans les fonctions support.
+                    </p>
                     <ul class="text-sm font-semibold text-slate-700 space-y-3">
                         <li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Design sprint</li>
                         <li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> UX Design Terrain</li>
-			<li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Architecture fonctionnelle</li>
-			<li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Prototypes testés en réel</li>
-
+                        <li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Architecture fonctionnelle</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Prototypes testés en réel</li>
                     </ul>
                 </div>
 
-                <!-- Etape 3 -->
                 <div class="bg-white p-10 rounded-3xl border border-slate-100 card-hover relative overflow-hidden group step-card">
                     <div class="absolute top-0 right-0 w-24 h-24 bg-blue-500/5 rounded-bl-full group-hover:bg-blue-500 transition-colors duration-500"></div>
-                    <!-- Numéro interactif -->
                     <div class="text-5xl font-black text-blue-100 mb-8 relative transition-colors duration-300 group-hover:text-blue-600 step-number">03</div>
-                    <h4 class="text-2xl font-extrabold mb-4 text-slate-800">Déploiement </h4>
+                    <h4 class="text-2xl font-extrabold mb-4 text-slate-800">Déploiement</h4>
                     <p class="text-slate-500 italic mb-6">
                         "Un bon outil évolue avec votre organisation."
                     </p>
-                    <p class="text-slate-600 mb-8 leading-relaxed">Nous connectons vos outils existants et faisons évoluer la solution dans le temps pour accompagner votre organisation.</p>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        Nous connectons vos outils existants et faisons évoluer la solution dans le temps pour accompagner votre organisation.
+                    </p>
                     <ul class="text-sm font-semibold text-slate-700 space-y-3">
                         <li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Intégration API robuste</li>
                         <li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Supervision technique</li>
-			<li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Maintenance évolutive</li>
-			<li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Accompagnement des équipes</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Maintenance évolutive</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check-circle text-blue-500 mr-3"></i> Accompagnement des équipes</li>
                     </ul>
                 </div>
             </div>
-        </div>
-	
 
-	  <!-- SECTION EXPERTISES -->
+            <!-- Expertises -->
             <div class="mt-16 text-center max-w-4xl mx-auto">
-                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8 italic">Nos Expertises transverses</p>
-<br>
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-8 italic">Nos expertises transverses</p>
+
                 <div class="flex flex-wrap justify-center gap-4">
-                    <div class="expertise-badge bg-white px-6 py-3 rounded-2xl flex items-center space-x-3 shadow-sm">
+                    <div class="bg-white px-6 py-3 rounded-2xl flex items-center space-x-3 shadow-sm">
                         <i class="fa-solid fa-wand-magic-sparkles text-blue-600 text-sm"></i>
                         <span class="font-bold text-slate-700 text-sm">UX Design</span>
                     </div>
-                    <div class="expertise-badge bg-white px-6 py-3 rounded-2xl flex items-center space-x-3 shadow-sm">
+                    <div class="bg-white px-6 py-3 rounded-2xl flex items-center space-x-3 shadow-sm">
                         <i class="fa-solid fa-lightbulb text-blue-600 text-sm"></i>
                         <span class="font-bold text-slate-700 text-sm">Design Thinking</span>
                     </div>
-                    <div class="expertise-badge bg-white px-6 py-3 rounded-2xl flex items-center space-x-3 shadow-sm">
+                    <div class="bg-white px-6 py-3 rounded-2xl flex items-center space-x-3 shadow-sm">
                         <i class="fa-solid fa-bolt text-blue-600 text-sm"></i>
                         <span class="font-bold text-slate-700 text-sm">Design Sprint</span>
                     </div>
-                    <div class="expertise-badge bg-white px-6 py-3 rounded-2xl flex items-center space-x-3 shadow-sm">
+                    <div class="bg-white px-6 py-3 rounded-2xl flex items-center space-x-3 shadow-sm">
                         <i class="fa-solid fa-hand-pointer text-blue-600 text-sm"></i>
                         <span class="font-bold text-slate-700 text-sm">Ergonomie</span>
                     </div>
-                    <div class="expertise-badge bg-white px-6 py-3 rounded-2xl flex items-center space-x-3 shadow-sm">
+                    <div class="bg-white px-6 py-3 rounded-2xl flex items-center space-x-3 shadow-sm">
                         <i class="fa-solid fa-brain text-blue-600 text-sm"></i>
                         <span class="font-bold text-slate-700 text-sm">Neuroscience</span>
                     </div>
-                    
-    </section>
+                </div>
+            </div>
 
-         <!-- NOUVEAU BLOC : Résultats Concrets -->
+            <!-- Résultats -->
             <div class="mt-20 bg-white rounded-[2.5rem] border border-slate-100 p-8 md:p-12 shadow-sm max-w-5xl mx-auto">
                 <div class="flex flex-col md:flex-row items-center gap-10">
                     <div class="md:w-1/3">
@@ -471,7 +572,7 @@
                             <div class="mt-1 w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
                                 <i class="fa-solid fa-check text-emerald-600 text-[10px]"></i>
                             </div>
-                            <span class="text-slate-700 font-semibold text-sm"> Moins de ressaisies et d'erreurs entre vos outils</span>
+                            <span class="text-slate-700 font-semibold text-sm">Moins de ressaisies et d'erreurs entre vos outils</span>
                         </div>
                         <div class="flex items-start space-x-3">
                             <div class="mt-1 w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0">
@@ -494,42 +595,45 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-	    </section>
-
-   <!-- Pourquoi choisir Keleo Section (Nouveau Design inspiré de l'approche) -->
-    <section id="choisir" class="py-24 bg-slate-900 text-white overflow-hidden">
-        <div class="container mx-auto px-6">
+    <!-- Pourquoi choisir Keleo -->
+    <section id="choisir" class="py-16 sm:py-24 bg-slate-900 text-white overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6">
             <div class="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-                <!-- Texte à gauche -->
                 <div class="lg:w-1/2">
                     <h2 class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-4">Valeurs & Partenariat</h2>
-                    <h3 class="text-3xl md:text-5xl font-black text-slate-white mb-6 leading-tight">Pourquoi les organisations choisissent <span class="text-blue-400">Keleo</span></h3>
+                    <h3 class="text-3xl md:text-5xl font-black mb-6 leading-tight">
+                        Pourquoi les organisations choisissent <span class="text-blue-400">Keleo</span>
+                    </h3>
                     <p class="text-lg text-slate-100 mb-10 leading-relaxed">
-                        Nous accompagnons les organisations de santé confrontées à des systèmes d'information fragmentés. Notre approche combine compréhension métier, expertise technique et accompagnement dans la durée.<br>
+                        Nous accompagnons les organisations de santé confrontées à des systèmes d'information fragmentés. Notre approche combine compréhension métier, expertise technique et accompagnement dans la durée.
                     </p>
-                    
+
                     <ul class="space-y-8">
                         <li class="flex items-start space-x-5 group">
-                            <div class="mt-1 w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-200">
+                            <div class="mt-1 w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-200 shrink-0">
                                 <i class="fa-solid fa-brain"></i>
                             </div>
                             <div>
                                 <span class="font-extrabold block text-xl mb-1 text-white">Compréhension métier</span>
-                                <p class="text-slate-100 text-sm">Nous analysons votre organisation en profondeur avant de prendre la moindre décision technique.</p> <br>
+                                <p class="text-slate-100 text-sm">Nous analysons votre organisation en profondeur avant de prendre la moindre décision technique.</p>
                             </div>
                         </li>
+
                         <li class="flex items-start space-x-5 group">
-                            <div class="mt-1 w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-200">
+                            <div class="mt-1 w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-200 shrink-0">
                                 <i class="fa-solid fa-puzzle-piece"></i>
                             </div>
                             <div>
                                 <span class="font-extrabold block text-xl mb-1 text-white">Solutions adaptées</span>
-                                <p class="text-slate-100 text-sm">Chaque logiciel est conçu pour s'intégrer harmonieusement à vos processus et vos outils existants.</p> <br>
+                                <p class="text-slate-100 text-sm">Chaque logiciel est conçu pour s'intégrer harmonieusement à vos processus et vos outils existants.</p>
                             </div>
                         </li>
+
                         <li class="flex items-start space-x-5 group">
-                            <div class="mt-1 w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-200">
+                            <div class="mt-1 w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white shadow-lg shadow-blue-200 shrink-0">
                                 <i class="fa-solid fa-clock-rotate-left"></i>
                             </div>
                             <div>
@@ -540,13 +644,11 @@
                     </ul>
                 </div>
 
-                <!-- Photo de l'équipe à droite -->
                 <div class="lg:w-1/2 relative">
                     <div class="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white">
                         <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=1000" alt="L'équipe Keleo en collaboration" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent"></div>
                     </div>
-                    <!-- Eléments décoratifs -->
                     <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-blue-100 rounded-full -z-10"></div>
                     <div class="absolute -top-6 -left-6 w-24 h-24 bg-blue-600 rounded-2xl -z-10 rotate-12"></div>
                 </div>
@@ -554,9 +656,9 @@
         </div>
     </section>
 
-   <!-- Expertise Métier Section (Light Blue Background) -->
-    <section id="expertise" class="py-24 bg-blue-50/50 text-center">
-        <div class="container mx-auto px-6">
+    <!-- Expertise métier -->
+    <section id="expertise" class="py-16 sm:py-24 bg-blue-50/50 text-center">
+        <div class="container mx-auto px-4 sm:px-6">
             <div class="max-w-4xl mx-auto mb-16">
                 <h2 class="text-sm font-bold text-blue-600 uppercase tracking-widest mb-4">Savoir-faire Sectoriel</h2>
                 <h3 class="text-3xl md:text-4xl font-black text-slate-900 mb-6">Une expertise métier dans le secteur de la santé</h3>
@@ -566,37 +668,42 @@
             </div>
 
             <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Carte Laboratoires -->
                 <div class="bg-white p-8 pb-10 rounded-3xl border border-blue-100 shadow-sm flex flex-col items-center group hover:bg-blue-600 transition duration-300 transform hover:-translate-y-1">
                     <div class="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6 group-hover:bg-white/20 group-hover:text-white transition">
                         <i class="fa-solid fa-vial text-2xl"></i>
                     </div>
                     <h4 class="text-xl font-bold mb-3 text-slate-900 group-hover:text-white">Laboratoires</h4>
-                    <p class="text-slate-500 text-sm mb-8 group-hover:text-blue-100 leading-relaxed">Gestion des flux d'échantillons et interfaçage avec les automates d'analyse.</p>
+                    <p class="text-slate-500 text-sm mb-8 group-hover:text-blue-100 leading-relaxed">
+                        Gestion des flux d'échantillons et interfaçage avec les automates d'analyse.
+                    </p>
                     <a href="#expert" class="mt-auto flex items-center space-x-2 text-sm font-bold text-blue-600 group-hover:text-white border-b border-transparent hover:border-current transition">
                         <span>En savoir plus</span>
                         <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
-                <!-- Carte Centres d'imagerie -->
+
                 <div class="bg-white p-8 pb-10 rounded-3xl border border-blue-100 shadow-sm flex flex-col items-center group hover:bg-blue-600 transition duration-300 transform hover:-translate-y-1">
                     <div class="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6 group-hover:bg-white/20 group-hover:text-white transition">
                         <i class="fa-solid fa-x-ray text-2xl"></i>
                     </div>
                     <h4 class="text-xl font-bold mb-3 text-slate-900 group-hover:text-white">Centres d’imagerie</h4>
-                    <p class="text-slate-500 text-sm mb-8 group-hover:text-blue-100 leading-relaxed">Optimisation de la prise de rendez-vous et workflow d'examen multi-sites.</p>
+                    <p class="text-slate-500 text-sm mb-8 group-hover:text-blue-100 leading-relaxed">
+                        Optimisation de la prise de rendez-vous et workflow d'examen multi-sites.
+                    </p>
                     <a href="#expert" class="mt-auto flex items-center space-x-2 text-sm font-bold text-blue-600 group-hover:text-white border-b border-transparent hover:border-current transition">
                         <span>En savoir plus</span>
                         <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
                     </a>
                 </div>
-                <!-- Carte Structures de soins -->
+
                 <div class="bg-white p-8 pb-10 rounded-3xl border border-blue-100 shadow-sm flex flex-col items-center group hover:bg-blue-600 transition duration-300 transform hover:-translate-y-1">
                     <div class="w-16 h-16 rounded-2xl bg-blue-50 text-blue-600 flex items-center justify-center mb-6 group-hover:bg-white/20 group-hover:text-white transition">
                         <i class="fa-solid fa-hospital-user text-2xl"></i>
                     </div>
                     <h4 class="text-xl font-bold mb-3 text-slate-900 group-hover:text-white">Structures de soins</h4>
-                    <p class="text-slate-500 text-sm mb-8 group-hover:text-blue-100 leading-relaxed">Coordination des soins et suivi du parcours patient complet et sécurisé.</p>
+                    <p class="text-slate-500 text-sm mb-8 group-hover:text-blue-100 leading-relaxed">
+                        Coordination des soins et suivi du parcours patient complet et sécurisé.
+                    </p>
                     <a href="#expert" class="mt-auto flex items-center space-x-2 text-sm font-bold text-blue-600 group-hover:text-white border-b border-transparent hover:border-current transition">
                         <span>En savoir plus</span>
                         <i class="fa-solid fa-arrow-right-long group-hover:translate-x-1 transition-transform"></i>
@@ -605,14 +712,11 @@
             </div>
         </div>
     </section>
-    
-    </section>
 
-   <!-- Expert Section -->
-    <section id="expert" class="py-24 bg-slate-50 overflow-hidden">
-        <div class="container mx-auto px-6">
+    <!-- Expert Section -->
+    <section id="expert" class="py-16 sm:py-24 bg-slate-50 overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6">
             <div class="max-w-5xl mx-auto bg-white rounded-[2.5rem] border border-slate-200 shadow-sm overflow-hidden flex flex-col md:flex-row items-stretch">
-                <!-- Image de Lucie -->
                 <div class="md:w-1/3 bg-blue-900 flex flex-col justify-center p-0 text-center relative overflow-hidden min-h-[350px]">
                     <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800" alt="Lucie - Experte Santé Keleo" class="absolute inset-0 w-full h-full object-cover opacity-80">
                     <div class="absolute inset-0 bg-gradient-to-t from-blue-900 via-transparent to-transparent"></div>
@@ -621,8 +725,7 @@
                         <p class="text-blue-300 text-sm font-medium">Experte Solutions Santé</p>
                     </div>
                 </div>
-                
-                <!-- Content -->
+
                 <div class="md:w-2/3 p-10 lg:p-14 flex flex-col justify-center">
                     <div class="flex items-center space-x-2 text-blue-600 mb-6 uppercase tracking-widest text-[10px] font-bold">
                         <span class="w-8 h-[1px] bg-blue-600"></span>
@@ -634,8 +737,7 @@
                     <p class="text-slate-600 text-base leading-relaxed mb-8 font-light italic">
                         "Ma mission est simple : transformer vos contraintes opérationnelles en avantages compétitifs. Je ne vous vends pas un logiciel, je construis l'outil qui libère vos équipes au quotidien."
                     </p>
-                    
-                    <!-- Double CTA -->
+
                     <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mb-10">
                         <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-center hover:bg-blue-700 transition shadow-lg btn-shadow whitespace-nowrap">
                             Réserver mon créneau
@@ -660,45 +762,47 @@
         </div>
     </section>
 
-
-   
-
-    <!-- Testimonials Section -->
-    <section id="avis" class="py-20 bg-slate-50">
-        <div class="container mx-auto px-6">
-            <div class="bg-blue-50 rounded-3xl p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-blue-100">
+    <!-- Testimonials -->
+    <section id="avis" class="py-16 sm:py-20 bg-slate-50">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="bg-blue-50 rounded-3xl p-8 sm:p-12 flex flex-col md:flex-row items-center justify-between gap-8 border border-blue-100">
                 <div class="max-w-2xl">
-                    <h3 class="text-2xl font-bold mb-4 italic">"Keleo nous a permis de structurer nos processus et de gagner un temps considérable dans la gestion de notre activité."</h3>
+                    <h3 class="text-2xl font-bold mb-4 italic">
+                        "Keleo nous a permis de structurer nos processus et de gagner un temps considérable dans la gestion de notre activité."
+                    </h3>
                     <div class="flex items-center space-x-4">
                         <div class="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
                             <i class="fa-solid fa-user text-xl"></i>
                         </div>
                         <div>
                             <p class="font-bold">Claire Dubois</p>
-                            <p class="text-slate-600 mb-6" tracking-wide uppercase"> Directrice des Opérations - Structure santé multi-sites</p>
-			    <div class="flex space-x-1 text-yellow-500 mt-1">
-                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <p class="text-slate-600 mb-2 tracking-wide uppercase">Directrice des Opérations - Structure santé multi-sites</p>
+                            <div class="flex space-x-1 text-yellow-500 mt-1">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
                             </div>
                         </div>
                     </div>
                 </div>
-                 <div class="text-center md:text-right">
-                <p class="text-4xl font-extrabold text-blue-900 mb-2">30%</p>
-                <p class="text-slate-600 font-medium uppercase text-xs tracking-widest">de gain de temps administratif</p>
+                <div class="text-center md:text-right">
+                    <p class="text-4xl font-extrabold text-blue-900 mb-2">30%</p>
+                    <p class="text-slate-600 font-medium uppercase text-xs tracking-widest">de gain de temps administratif</p>
                 </div>
-            </div>
             </div>
         </div>
     </section>
 
-    
-    <!-- FAQ Section -->
-    <section id="faq" class="py-24 bg-blue-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-20">
+    <!-- FAQ -->
+    <section id="faq" class="py-16 sm:py-24 bg-blue-50">
+        <div class="container mx-auto px-4 sm:px-6">
+            <div class="text-center max-w-2xl mx-auto mb-14 sm:mb-20">
                 <h2 class="text-sm font-bold text-blue-600 uppercase tracking-widest mb-4 italic">FAQ</h2>
-                <h3 class="text-4xl font-black text-slate-900">Questions fréquentes</h3>
+                <h3 class="text-3xl sm:text-4xl font-black text-slate-900">Questions fréquentes</h3>
             </div>
+
             <div class="max-w-3xl mx-auto space-y-4">
                 <details class="faq-item group bg-white rounded-3xl border border-slate-100 p-4 transition-all duration-300 hover:shadow-md">
                     <summary class="list-none flex justify-between items-center p-4 cursor-pointer font-extrabold text-slate-800 text-lg">
@@ -709,6 +813,7 @@
                         Non, c'est justement notre force. Nous agissons comme une "couche intelligente" qui connecte vos outils actuels (CRM, ERP, Facturation) via API pour éviter toute rupture de service ou migration douloureuse.
                     </div>
                 </details>
+
                 <details class="faq-item group bg-white rounded-3xl border border-slate-100 p-4 transition-all duration-300 hover:shadow-md">
                     <summary class="list-none flex justify-between items-center p-4 cursor-pointer font-extrabold text-slate-800 text-lg">
                         Quelle est la durée moyenne d'un projet ?
@@ -718,6 +823,7 @@
                         Tout dépend de la complexité, mais nous travaillons en mode agile. Un premier module opérationnel (MVP) est généralement déployé en <strong>4 à 8 semaines</strong> pour apporter des résultats immédiats.
                     </div>
                 </details>
+
                 <details class="faq-item group bg-white rounded-3xl border border-slate-100 p-4 transition-all duration-300 hover:shadow-md">
                     <summary class="list-none flex justify-between items-center p-4 cursor-pointer font-extrabold text-slate-800 text-lg">
                         Mes données sont-elles sécurisées ?
@@ -731,33 +837,24 @@
         </div>
     </section>
 
-<!-- Contact Footer -->
-<footer id="contact" class="py-24 bg-slate-900 text-white relative overflow-hidden">
+    <!-- Contact Footer -->
+    <footer id="contact" class="py-16 sm:py-24 bg-slate-900 text-white relative overflow-hidden">
+        <div class="container mx-auto px-4 sm:px-6 relative z-10">
+            <div class="max-w-2xl mx-auto mb-10">
+                <h2 class="text-3xl sm:text-4xl font-black mb-6 text-white">
+                    Prêt à simplifier votre pilotage ?
+                </h2>
 
-    <div class="container mx-auto px-6 relative z-10">
-<div class="max-w-2xl mx-auto mb-10">
+                <p class="text-slate-400 text-lg leading-relaxed">
+                    Prenons 30 minutes pour analyser vos flux de données et identifier vos gains de productivité concrets.
+                </p>
 
-<h2 class="text-4xl font-black mb-6 text-white">
-Prêt à simplifier votre pilotage ?
-</h2>
+                <p class="text-sm text-slate-300 mt-4">
+                    Gratuit • Sans engagement • Échange confidentiel
+                </p>
+            </div>
 
-<p class="text-slate-400 text-lg leading-relaxed">
-Prenons 30 minutes pour analyser vos flux de données et identifier vos gains de productivité concrets.
-</p>
-
-<p class="text-sm text-slate-300 mt-4">
-Gratuit • Sans engagement • Échange confidentiel
-</p>
-
-</div>
-
-<div class="max-w-2xl mx-auto mb-12">
-
-<div
-
-        <!-- 3 points ajoutés -->
-        <div class="max-w-2xl mx-auto mb-12">
-            
+            <div class="max-w-2xl mx-auto mb-12 space-y-4">
                 <div class="flex items-center space-x-4">
                     <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
                     <span class="text-blue-50">Analyse rapide de votre organisation actuelle</span>
@@ -771,149 +868,147 @@ Gratuit • Sans engagement • Échange confidentiel
                     <span class="text-blue-50">Première estimation budgétaire de votre projet</span>
                 </div>
             </div>
+
+            <div class="bg-white p-6 sm:p-10 rounded-[2.5rem] shadow-2xl max-w-3xl mx-auto border border-white/10 relative">
+                <form class="space-y-6 text-left" onsubmit="event.preventDefault();">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-slate-700 text-sm font-bold mb-2 ml-1">
+                                Nom complet
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Jean Dupont"
+                                class="w-full px-5 py-4 rounded-2xl border border-slate-200 text-slate-900 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-slate-700 text-sm font-bold mb-2 ml-1">
+                                Organisation
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Santé Logix"
+                                class="w-full px-5 py-4 rounded-2xl border border-slate-200 text-slate-900 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-slate-700 text-sm font-bold mb-2 ml-1">
+                                Fonction
+                            </label>
+                            <input
+                                type="text"
+                                placeholder="Directeur des opérations"
+                                class="w-full px-5 py-4 rounded-2xl border border-slate-200 text-slate-900 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-slate-700 text-sm font-bold mb-2 ml-1">
+                                Email professionnel
+                            </label>
+                            <input
+                                type="email"
+                                placeholder="jean.dupont@entreprise.fr"
+                                class="w-full px-5 py-4 rounded-2xl border border-slate-200 text-slate-900 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-slate-700 text-sm font-bold mb-2 ml-1">
+                            Motif de votre demande
+                        </label>
+
+                        <select class="w-full px-5 py-4 rounded-2xl border border-slate-200 text-slate-900 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition">
+                            <option value="">Sélectionner un motif</option>
+                            <option value="audit">Audit de nos outils ou de notre organisation</option>
+                            <option value="projet">Projet de logiciel métier</option>
+                            <option value="interconnexion">Interconnexion de logiciels existants</option>
+                            <option value="optimisation">Optimisation des processus internes</option>
+                            <option value="information">Demande d'information</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-slate-700 text-sm font-bold mb-2 ml-1">
+                            Type de structure
+                        </label>
+
+                        <select class="w-full px-5 py-4 rounded-2xl border border-slate-200 text-slate-900 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition">
+                            <option value="">Sélectionner votre structure</option>
+                            <option value="laboratoire">Laboratoire d’analyses</option>
+                            <option value="imagerie">Centre d’imagerie / radiologie</option>
+                            <option value="psad">PSAD</option>
+                            <option value="clinique">Clinique / établissement de santé</option>
+                            <option value="reseau">Réseau de structures de santé</option>
+                            <option value="autre">Autre structure de santé</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-slate-700 text-sm font-bold mb-2 ml-1">
+                            Nombre de sites
+                        </label>
+
+                        <select class="w-full px-5 py-4 rounded-2xl border border-slate-200 text-slate-900 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition">
+                            <option value="">Sélectionner</option>
+                            <option value="1">1 site</option>
+                            <option value="2-5">2 à 5 sites</option>
+                            <option value="6-20">6 à 20 sites</option>
+                            <option value="20+">Plus de 20 sites</option>
+                        </select>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
+                        <button
+                            type="submit"
+                            class="sm:flex-1 bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-center hover:bg-blue-700 transition shadow-lg btn-shadow whitespace-nowrap">
+                            Obtenir mon diagnostic offert
+                        </button>
+
+                        <a
+                            href="mailto:contact@keleo.fr"
+                            class="sm:w-auto bg-white border-2 border-slate-200 text-slate-700 px-8 py-4 rounded-xl font-bold text-center hover:bg-slate-50 hover:border-blue-400 transition whitespace-nowrap">
+                            Nous écrire
+                        </a>
+                    </div>
+
+                    <div class="flex items-center justify-center space-x-2 text-[10px] text-slate-400 mt-6">
+                        <i class="fa-solid fa-lock"></i>
+                        <span>Confidentialité garantie • Diagnostic 30 min offert par un expert</span>
+                    </div>
+                </form>
+            </div>
         </div>
 
-        <!-- Formulaire élargi -->
-        <div class="bg-white p-10 rounded-[2.5rem] shadow-2xl max-w-3xl mx-auto border border-white/10 relative">
-
-            <form class="space-y-6 text-left" onsubmit="event.preventDefault();">
-
-                <!-- Ligne 1 -->
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-slate-700 text-sm font-bold mb-2 ml-1">
-                            Nom complet
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Jean Dupont"
-                            class="w-full px-5 py-4 rounded-2xl border border-slate-200 text-slate-900 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition">
-                    </div>
-
-                    <div>
-                        <label class="block text-slate-700 text-sm font-bold mb-2 ml-1">
-                            Organisation
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Santé Logix"
-                            class="w-full px-5 py-4 rounded-2xl border border-slate-200 text-slate-900 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition">
-                    </div>
-                </div>
-
-                <!-- Ligne 2 -->
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-slate-700 text-sm font-bold mb-2 ml-1">
-                            Fonction
-                        </label>
-                        <input
-                            type="text"
-                            placeholder="Directeur des opérations"
-                            class="w-full px-5 py-4 rounded-2xl border border-slate-200 text-slate-900 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition">
-                    </div>
-
-                    <div>
-                        <label class="block text-slate-700 text-sm font-bold mb-2 ml-1">
-                            Email professionnel
-                        </label>
-                        <input
-                            type="email"
-                            placeholder="jean.dupont@entreprise.fr"
-                            class="w-full px-5 py-4 rounded-2xl border border-slate-200 text-slate-900 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition">
-                    </div>
-                </div>
-
-                <!-- Motif -->
-                <div>
-                    <label class="block text-slate-700 text-sm font-bold mb-2 ml-1">
-                        Motif de votre demande
-                    </label>
-
-                    <select
-                        class="w-full px-5 py-4 rounded-2xl border border-slate-200 text-slate-900 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition">
-                        <option value="">Sélectionner un motif</option>
-                        <option value="audit">Audit de nos outils ou de notre organisation</option>
-                        <option value="projet">Projet de logiciel métier</option>
-                        <option value="interconnexion">Interconnexion de logiciels existants</option>
-                        <option value="optimisation">Optimisation des processus internes</option>
-                        <option value="information">Demande d'information</option>
-                    </select>
-                </div>
-
-                <!-- Type de structure -->
-                <div>
-                    <label class="block text-slate-700 text-sm font-bold mb-2 ml-1">
-                        Type de structure
-                    </label>
-
-                    <select
-                        class="w-full px-5 py-4 rounded-2xl border border-slate-200 text-slate-900 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition">
-                        <option value="">Sélectionner votre structure</option>
-                        <option value="laboratoire">Laboratoire d’analyses</option>
-                        <option value="imagerie">Centre d’imagerie / radiologie</option>
-                        <option value="psad">PSAD</option>
-                        <option value="clinique">Clinique / établissement de santé</option>
-                        <option value="reseau">Réseau de structures de santé</option>
-                        <option value="autre">Autre structure de santé</option>
-                    </select>
-                </div>
-
-                <!-- Nombre de sites -->
-                <div>
-                    <label class="block text-slate-700 text-sm font-bold mb-2 ml-1">
-                        Nombre de sites
-                    </label>
-
-                    <select
-                        class="w-full px-5 py-4 rounded-2xl border border-slate-200 text-slate-900 outline-none focus:ring-4 focus:ring-blue-500/10 focus:border-blue-600 transition">
-                        <option value="">Sélectionner</option>
-                        <option value="1">1 site</option>
-                        <option value="2-5">2 à 5 sites</option>
-                        <option value="6-20">6 à 20 sites</option>
-                        <option value="20+">Plus de 20 sites</option>
-                    </select>
-                </div>
-
-                <!-- Double CTA -->
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-4">
-                    <button
-                        type="submit"
-                        class="sm:flex-1 bg-blue-600 text-white px-8 py-4 rounded-xl font-bold text-center hover:bg-blue-700 transition shadow-lg btn-shadow whitespace-nowrap">
-                        Obtenir mon diagnostic offert
-                    </button>
-
-                    <a
-                        href="mailto:contact@keleo.fr"
-                        class="sm:w-auto bg-white border-2 border-slate-200 text-slate-700 px-8 py-4 rounded-xl font-bold text-center hover:bg-slate-50 hover:border-blue-400 transition whitespace-nowrap">
-                        Nous écrire
-                    </a>
-                </div>
-
-                <div class="flex items-center justify-center space-x-2 text-[10px] text-slate-400 mt-6">
-                    <i class="fa-solid fa-lock"></i>
-                    <span>Confidentialité garantie • Diagnostic 30 min offert par un expert</span>
-                </div>
-
-            </form>
-        </div>
-
-    </div>
-
-    <!-- Background accents -->
-    <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-600/10 blur-[100px] rounded-full"></div>
-
-</footer>
-        
-        <!-- Background accents -->
         <div class="absolute bottom-0 left-0 w-64 h-64 bg-blue-600/10 blur-[100px] rounded-full"></div>
     </footer>
-    <!-- Script pour l'activation auto au scroll (Mobile) -->
+
+    <!-- Script menu mobile -->
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+    </script>
+
+    <!-- Script scroll mobile -->
     <script>
         const observerOptions = {
             root: null,
             rootMargin: '0px',
-            threshold: 0.6 // L'élément est considéré "vu" quand 60% est visible
+            threshold: 0.6
         };
 
         const observerCallback = (entries) => {
@@ -927,8 +1022,7 @@ Gratuit • Sans engagement • Échange confidentiel
         };
 
         const observer = new IntersectionObserver(observerCallback, observerOptions);
-        
-        // On n'active l'observer que sur les petits écrans (mobile)
+
         if (window.innerWidth < 768) {
             document.querySelectorAll('.step-card').forEach(card => {
                 observer.observe(card);
